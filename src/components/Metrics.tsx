@@ -1,18 +1,18 @@
 import React, {useEffect} from 'react';
 import Card from '@material-ui/core/Card';
-import CardHeader from './CardHeader';
-import Typography from '@material-ui/core/Typography';
-import CardContent from '@material-ui/core/CardContent';
+// import CardHeader from './CardHeader';
+// import Typography from '@material-ui/core/Typography';
+import LinearProgress from '@material-ui/core/LinearProgress';
+// import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 import { Provider, createClient, useQuery } from 'urql';
 import gql from 'graphql-tag'
-import Loading from './Loading';
 
 const client = createClient({
   url: 'https://react.eogresources.com/graphql',
 });
 
-const query = `
+const query = gql`
   {
     getMetrics
   }
@@ -44,7 +44,7 @@ const Metrics = () => {
   
   return (
     <>
-      {fetching && <Loading />}
+      {fetching && <LinearProgress />}
       <Card className={classes.card}>
         {/* <CardHeader title="Sick Graphs!" />
         <CardContent>
